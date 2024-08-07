@@ -32,9 +32,11 @@ services:
 
   blackbox-exporter:
     image: quay.io/prometheus/blackbox-exporter:latest
+    ports:
+      - "9115:9115"
     volumes:
       - "./blackbox-exporter:/config"
-      
+
 
 
 volumes:
