@@ -19,4 +19,14 @@ scrape_configs:
           - 'prometheus:9090'
           - 'idonotexists:564'
 
-
+  - job_name: file_sd
+    honor_timestamps: true
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    scheme: http  
+    follow_redirects: true
+    file_sd_configs:
+      - files:
+        - dynamic-config.yml
+        refresh_interval: 5m

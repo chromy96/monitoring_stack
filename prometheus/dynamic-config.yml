@@ -1,0 +1,4 @@
+- targets: [ 'host.docker.internal:8082' ]
+  labels:
+    wildfly_node: 'node1'
+    environment: 'dejan-local'
