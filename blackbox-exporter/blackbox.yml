@@ -1,0 +1,21 @@
+modules:
+  efaktura2_mtls_post:
+    prober: http
+    timeout: 5s
+    http:
+      valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      follow_redirects: true
+      # method: POST
+      # body_file: "body.txt"
+      # tls_config:
+      #   # The CA cert to use for the targets.
+      #   ca_file: "ca_cert.crt"
+      #   # The client cert file for the targets.
+      #   cert_file: "application.crt"
+      #   # The client key file for the targets.
+      #   key_file: "application.key"
+      # valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
+      # fail_if_ssl: false
+      # fail_if_not_ssl: false
+      # follow_redirects: true

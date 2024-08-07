@@ -18,6 +18,7 @@ scrape_configs:
       - targets:
           - 'prometheus:9090'
           - 'idonotexists:564'
+          - 'blackbox-exporter:9115'
 
   - job_name: file_sd
     honor_timestamps: true
@@ -30,3 +31,19 @@ scrape_configs:
       - files:
         - dynamic-config.yml
         refresh_interval: 5m
+
+  - job_name: 'blackbox_efaktura2'
+    metrics_path: /probe
+    params:
+      module: [efaktura2_mtls_post]  # The module name defined in the Blackbox Exporter config
+    static_configs:
+      - targets:
+        #- efaktura2.no  # The endpoint you want to probe
+        - google.com
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115
